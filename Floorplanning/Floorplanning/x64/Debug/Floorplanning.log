@@ -1,0 +1,10 @@
+﻿  SimAnn.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+C:\Users\dutt_dell_2\source\repos\Floorplanning\Floorplanning\SimAnn.cpp(5,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dutt_dell_2\source\repos\Floorplanning\Floorplanning\SimAnn.cpp(42,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\dutt_dell_2\source\repos\Floorplanning\Floorplanning\SimAnn.cpp(158,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  flp_main.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\filesystem(12): warning STL4038: The contents of <filesystem> are available only with C++17 or later.
+C:\Users\dutt_dell_2\source\repos\Floorplanning\Floorplanning\flp_main.cpp(34,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+  Floorplanning.vcxproj -> C:\Users\dutt_dell_2\source\repos\Floorplanning\x64\Debug\Floorplanning.exe
