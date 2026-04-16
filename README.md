@@ -4,7 +4,9 @@ randomly searches the entire solution space to find a better result than the cur
 worse moves in hopes of escaping possible local minima. The floorplanner currently only performs floorplanning on the basis of Area and Half
 Perimeter Wirelength (HPWL) and also some exceed metric that further penalize moves if the chip exceeds the bounding box (each dataset has its
 bounding box specified in the input files). There are plans to expand this into a 3D floorplanner that considers some thermal costs to perform
-a thermal-aware placement.
+a thermal-aware placement. The data structure used in this project is based on a relation matrix data structure described in this paper:
+D. Al Saleh, Y. Safari, F. R. Amik and B. Vaisband, "P* Admissible Thermal-Aware Matrix Floorplanner for 3D ICs," 2023 IEEE 36th International 
+System-on-Chip Conference (SOCC), Santa Clara, CA, USA, 2023, pp. 1-6, doi: 10.1109/SOCC58585.2023.10256905.
 
 This Floorplanner has been tested only on Windows 11 systems. You can use PowerShell or VSCode to run the program. Make sure the latest 
 version of Python is installed on your system. Also, ensure matplotlib is installed for visualizing the floorplan at the end.
