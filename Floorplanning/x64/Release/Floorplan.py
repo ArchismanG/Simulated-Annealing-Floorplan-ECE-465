@@ -8,16 +8,11 @@ import matplotlib.patches as patches
 
 def main():
     print("=== PyCharm Controller: Floorplanner ===")
-
-    # --- RIGID DIRECTORIES ---
-    # Update these if your actual path is slightly different from the screenshot!
+    # Update these if your actual path is slightly different
     
     # 1. The exact path to the compiled C++ engine
     current_dir = os.path.dirname(os.path.abspath(__file__))
     exe_path = os.path.join(current_dir, "Floorplanning.exe")
-    
-    # 2. The path to your main VS project folder (where the 'Inputs' folder lives)
-    # The C++ code will use this as its base directory to look for files.
     project_dir = current_dir
 
     if not os.path.exists(exe_path):
@@ -32,13 +27,13 @@ def main():
     core_input = input("Enter core fraction divisor [Press Enter for default: 2]: ").strip()
     core_factor = core_input if core_input else "2"
 
+    # --- GET SIMULATED ANNEALING PARAMETERS --- 
     print("\n--- Simulated Annealing Parameters ---")
     start_temp = input("Start Temp [Default 1000.0]: ").strip() or "1000.0"
     cool_rate = input("Cooling Rate [Default 0.95]: ").strip() or "0.95"
     final_temp = input("Final Temp [Default 0.001]: ").strip() or "0.001"
     moves = input("Moves per Temp [Default 10000]: ").strip() or "10000"
 
-    # print(f"\n[System] Reaching into Visual Studio folders...")
     print(f"Simulated Annealing with Dataset {dataset_id}...\n")
     print("=" * 50)
     # --- START THE CLOCK ---
@@ -46,7 +41,6 @@ def main():
 
     # --- RUN THE C++ ENGINE ---
     try:
-        # We pass cwd=project_dir so the C++ code finds the Inputs folder
         subprocess.run([exe_path, dataset_id, core_factor, start_temp, cool_rate, final_temp, moves], cwd=project_dir, check=True)
         
     except subprocess.CalledProcessError as e:
@@ -63,8 +57,7 @@ def main():
     print("\nSimulated Annealing Engine finished successfully!")
     print(f"[System] Net SA Execution Time: {net_time:.4f} seconds")
     
-    # Since we set cwd=project_dir, the JSON file will be generated 
-    # right there in your Visual Studio folder!
+    # Open the JSON file for visualization purposes
     json_output_path = os.path.join(project_dir, "floorplan_output.json")
     # print(f"[System] Your data is waiting at: {json_output_path}")
 
@@ -95,7 +88,7 @@ def main():
     outline_box = patches.Rectangle((0, 0), out_x, out_y, 
                                     linewidth=2, edgecolor='red', facecolor='none', linestyle='--')
     ax.add_patch(outline_box)
-
+    # Draw a box around the final dimentions
     outline_box = patches.Rectangle((0, 0), fin_x, fin_y, 
                                     linewidth=2, edgecolor='green', facecolor='none', linestyle='--')
     ax.add_patch(outline_box)
@@ -103,13 +96,11 @@ def main():
     # 4. Draw every Chiplet inside the box
     for chip in data["chiplets"]:
         # Create a rectangle for each chiplet
-        # facecolor is light blue, edgecolor is black for a crisp border
         rect = patches.Rectangle((chip["x"], chip["y"]), chip["w"], chip["h"],
                                  linewidth=1, edgecolor='black', facecolor='skyblue', alpha=0.8)
         ax.add_patch(rect)
 
     # 5. Scale the camera to fit everything perfectly
-    # We add a 10% buffer around the edges so the box isn't touching the window limits
     buffer_x = out_x * 0.1
     buffer_y = out_y * 0.1
     
