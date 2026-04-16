@@ -16,6 +16,7 @@ Once in the right directory in PowerShell, enter the command: python3 Floorplan.
 This will start the floorplanning algorithm. Before the algorithm begins, it will ask you to enter a few parameters.
 
 Enter Dataset Choice (1-11): Enter just a number between 1 to 11 based on the dataset you want to evaluate.
+
 1: ami33    Contains 33 modules for floorplanning
 2: ami49    Contains 49 modules for floorplanning
 3: apte     Contains 9 modules for floorplanning
