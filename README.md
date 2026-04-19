@@ -9,7 +9,7 @@ a thermal-aware placement. The data structure used in this project is a B* tree 
 This Floorplanner has been tested only on Windows 11 systems. You can use PowerShell or VSCode to run the program. Make sure the latest 
 version of Python is installed on your system. Also, ensure matplotlib is installed for visualizing the floorplan at the end.
 Download the whole repository.
-Navigate to Floorplanning/x64/Release in the terminal. You can use cd "<Your Folder Path>/Floorplanning/x64/Release" in PowerShell.
+Navigate to Floorplanning/x64/Release in the terminal. You can use cd "\<Your Folder Path\>/Floorplanning/x64/Release" in PowerShell.
 Once in the right directory in PowerShell, enter the command: python3 Floorplan.py
 This will start the floorplanning algorithm. Before the algorithm begins, it will ask you to enter a few parameters.
 
