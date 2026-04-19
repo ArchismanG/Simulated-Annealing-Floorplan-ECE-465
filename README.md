@@ -1,59 +1,74 @@
-This floorplanner was made as a part of a course project for ECE 465 at the University of Illinois at Chicago.
-This is a simple 2D floorplanner that uses simulated annealing to perform floorplanning. Simulated Annealing is an algorithm that effectively
-randomly searches the entire solution space to find a better result than the current result but it will have a non-zero probability to accept
-worse moves in hopes of escaping possible local minima. The floorplanner currently only performs floorplanning on the basis of Area and Half
-Perimeter Wirelength (HPWL) and also some exceed metric that further penalize moves if the chip exceeds the bounding box (each dataset has its
-bounding box specified in the input files). There are plans to expand this into a 3D floorplanner that considers some thermal costs to perform
-a thermal-aware placement. The data structure used in this project is a B* tree datastructure
+# 2D B*-Tree Floorplanner
 
-This Floorplanner has been tested only on Windows 11 systems. You can use PowerShell or VSCode to run the program. Make sure the latest 
-version of Python is installed on your system. Also, ensure matplotlib is installed for visualizing the floorplan at the end.
-Download the whole repository.
-Navigate to Floorplanning/x64/Release in the terminal. You can use cd "\<Your Folder Path\>/Floorplanning/x64/Release" in PowerShell.
-Once in the right directory in PowerShell, enter the command: python3 Floorplan.py
-This will start the floorplanning algorithm. Before the algorithm begins, it will ask you to enter a few parameters.
+This is a C++ floorplanning engine developed as part of **ECE 465** at the University of Illinois at Chicago. This project utilizes **Simulated Annealing** and a **B*-Tree data structure** to optimize chip layouts for area, wirelength, and whitespace.
 
-Enter Dataset Choice (1-11): Enter just a number between 1 to 11 based on the dataset you want to evaluate.
+![Language](https://img.shields.io/badge/language-C%2B%2B-blue)
+![Platform](https://img.shields.io/badge/platform-Windows%2011-lightgrey)
+![Status](https://img.shields.io/badge/status-Course%20Project-success)
 
-* 1: ami33    Contains 33 modules for floorplanning
-* 2: ami49    Contains 49 modules for floorplanning
-* 3: apte     Contains 9 modules for floorplanning
-* 4: hp       Contains 11 modules for floorplanning
-* 5: xerox    Contains 10 modules for floorplanning
-* 6: n10      Contains 10 modules for floorplanning
-* 7: n30      Contains 30 modules for floorplanning
-* 8: n50      Contains 50 modules for floorplanning
-* 9: n100     Contains 100 modules for floorplanning
-* 10: n200    Contains 200 modules for floorplanning
-* 11: n300    Contains 300 modules for floorplanning
+##  Overview
 
-Enter core fraction divisor: What fraction of your CPU cores do you want to engage for this algorithm?
-If you have a 12-core system, entering a 1 will engage all 12 cores, entering a 2 will engage only 6 cores, entering a 3 will engage only 4 cores, etc.
-The more cores engaged, the better the simulated annealing solution will be since more of the solution space will be explored.
+This project performs 2D floorplanning by randomly exploring the solution space using a Simulated Annealing schedule. It evaluates moves based on:
+* **Total Area:** Minimizing the bounding box of the chiplets.
+* **HPWL (Half-Perimeter Wirelength):** Estimating routing costs between modules.
+* **Whitespace:** Minimizing the area of wasted space between the modules.
+* **Outline Penalties:** Ensuring the floorplan fits within the specified dataset bounding box.
 
-Next, it will ask you for the various simulated annealing parameters.
-Starting temperature: Enter whatever number you want, higher starting temperature will mean more probability to accept bad costs initially,
-and therefore a better chance to escape local minimia but too high of a temperature will mean too many bad moves are accepted and may hinder
-the algorithm from converging to a good result.
+**Future Plans:** This project will eventually be expanded for **3D Thermal-Aware Floorplanner** to consider TSVs and heat dissipation costs.
 
-Cooling rate: Enter a decimal between zero and 1. Do not enter 1, then the simulated annealing algorithm will not converge. This dictates how fast
-you want to lower the temperature (fewer chances of bad moves being accepted). The smaller the cooling rate value, the faster the temperature will cool, and the
-result may not fully explore the solution space, but if it is too high, the schedule will be very slow, and the algorithm will take a longer time to 
-reach a solution.
+## Installation & Setup
 
-Final Temperature: The temperature at which the simulated annealing algorithm should stop. If you stop when the temperature is too high, the 
-solution quality will not be very good.
+### Prerequisites
 
-Moves per Temperature: Simulated annealing algorithm performs multiple moves per temperature before cooling down, where it's less likely bad moves will
-be accepted. The higher this value is, the better the final result will be, but this also drastically increases the time taken by the algorithm
+* **Windows 11** (Tested environment).
+* **Python 3.x** (3.9.13 or higher).
+* **Matplotlib** (Needed for final visualization, install using pip install matplotlib)
+* **Visual Studio** (if you wish to modify and rebuild the C++ source).
 
-Once all these parameters are entered, the Python program will pass these parameters to an exe file; the exe file is the main simulated annealing
-algorithm that has been built from the C++ code that can be seen in /Floorplanning/Floorplanning folder. You can also open this whole repository
-as a Visual Studio project by opening Visual Studio and clicking on "Open Existing" and navigating to /Floorplanning/Floorplanning.sln
-You can edit the code to add modifications, but make sure to use the Release mode of Visual Studio when you are rebuilding the C++ code.
+### Running the Program
 
-Depending on the parameters entered, the code will take some time to run the whole algorithm. The bigger the dataset, the more time it will consume.
-Please note that engaging more cores will not speed up the algorithm; it uses the extra cores to explore more solutions using multiple random starts.
-Once the best floorplan has been found by the algorithm, the terminal will spit out the final dimensions, area, and HPWL. It will also create a JSON file output.
-The program will automatically jump back to the Python code, which will then report the time taken by the algorithm and also read the JSON file to 
-draw the layout of the chip, which you can use to visualize the final floorplan.
+1. Download or clone the repository.
+2. Open **PowerShell** or **VSCode Terminal**.
+3. Navigate to the directory:
+   ```powershell
+   cd "<Your Folder Path>/Floorplanning/x64/Release"
+4. Run the Python Script using VS code or 
+   ```poweshell
+   python3 Floorplan.py
+
+## Program Configuration
+
+When the program starts, it will ask you to enter a few different parameters
+1. **Dataset Selction**
+    Choose one of 11 possible datasets
+    | Dataset ID | Name | Modules |
+    | :--- | :--- | :--- |
+    | **1** | ami33 | 33 |
+    | **2** | ami49 | 49 |
+    | **3** | apte | 9 |
+    | **4** | hp | 11 |
+    | **5** | xerox | 10 |
+    | **6** | n10 | 10 |
+    | **7** | n30 | 30 |
+    | **8** | n50 | 50 |
+    | **9** | n100 | 100 |
+    | **10** | n200 | 200 |
+    | **11** | n300 | 300 |
+
+2. **Core Fraction Divisor**
+    Determines what fraction of the CPU cores will be utilized for the Simulated Annealing algorithm. **Note:** This will not cause the program to run faster. Instead more cores you engage, more runs of simulated annealing will take place in parallel with different random starts for each core, thus increasing the exploration of the solution space.
+    * *Example:* On a 12-core CPU, a divisor of 2 will only engage 6 cores
+
+3. **Simulated Annealing Settings**
+    * **Starting Temperature:** High values cause the algorithm to easily accept worse moves in the beginning to escape local minima. Higher values allow for more exploration of the the solution space.
+    * **Cooling Rate:** Enter a decimal between 0 and 1. **Do not enter 1* since this will make the simulated annealing program run forever. Higher the cooling rate, more time the program will take to converge on a solution.
+    * **Final Temperature:** Once the temperature reaches this value, the program will terminate an spit out the best result after all the simulated annealing moves.
+    * **Moves per Temperature:** This is an important metric which dictates how many moves will be performed before cooling by 1 step. Having this high allows for good exploration of the solution space however, increasing this will also cause the time taken by the algorithm to skyrocket.
+
+## Technical Details
+
+Once you have entered all the relevant parameters, the program will start. The python script is merely a user interface between the user the and code, the Simulated Annealing is actually written and built from C++ code. The python script is located in the same folder at the `Floorplanning.exe` which has already been built from the C++ code. The python script will pass these parameters to the C++ program which will perfrom the simulated annealing program, this will take somehere between a few seconds and a few minutes depending on the dataset. When the simulated annealing step is finished, the C++ program will output the best found dimentions and HPWL in the terminal and generate a `JSON` file with the final coordinates of all the blocks. Th python script will then output the time taken by the program and read the `JSON` file to generate a visualization for the floorplan.
+
+### Making Changes 
+
+If you want to make changes to the main Simulated Annealing program, I would suggest using Visual Studio. If you want to rebuild it using other tools, the source code is located at `/Floorplanning/Floorplanning`. You should see the files `flp_main.cpp`, `SimAnn.cpp`, `ReadInputs.cpp`, and `planner.h`. If you are using visual studio, simply clone the repository using `https://github.com/ArchismanG/Simulated-Annealing-Floorplan-ECE-465.git`, make changes to the source files and rebuild the code in release mode in Visual Studio. You can then run the python script again and it will use the newly rebuilt `Floorplanning.exe` file.
