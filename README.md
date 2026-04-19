@@ -24,8 +24,8 @@ Enter Dataset Choice (1-11): Enter just a number between 1 to 11 based on the da
 * 7: n30      Contains 30 modules for floorplanning
 * 8: n50      Contains 50 modules for floorplanning
 * 9: n100     Contains 100 modules for floorplanning
-10: n200    Contains 200 modules for floorplanning
-11: n300    Contains 300 modules for floorplanning
+* 10: n200    Contains 200 modules for floorplanning
+* 11: n300    Contains 300 modules for floorplanning
 
 Enter core fraction divisor: What fraction of your CPU cores do you want to engage for this algorithm?
 If you have a 12-core system, entering a 1 will engage all 12 cores, entering a 2 will engage only 6 cores, entering a 3 will engage only 4 cores, etc.
