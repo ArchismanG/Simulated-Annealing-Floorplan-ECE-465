@@ -61,7 +61,7 @@ When the program starts, it will ask you to enter a few different parameters
 
 3. **Simulated Annealing Settings**
     * **Starting Temperature:** High values cause the algorithm to easily accept worse moves in the beginning to escape local minima. Higher values allow for more exploration of the the solution space.
-    * **Cooling Rate:** Enter a decimal between 0 and 1. **Do not enter 1* since this will make the simulated annealing program run forever. Higher the cooling rate, more time the program will take to converge on a solution.
+    * **Cooling Rate:** Enter a decimal between 0 and 1. **Do not enter 1** since this will make the simulated annealing program run forever. Higher the cooling rate, more time the program will take to converge on a solution.
     * **Final Temperature:** Once the temperature reaches this value, the program will terminate an spit out the best result after all the simulated annealing moves.
     * **Moves per Temperature:** This is an important metric which dictates how many moves will be performed before cooling by 1 step. Having this high allows for good exploration of the solution space however, increasing this will also cause the time taken by the algorithm to skyrocket.
 
