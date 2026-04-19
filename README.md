@@ -22,7 +22,7 @@ This project performs 2D floorplanning by randomly exploring the solution space 
 
 * **Windows 11** (Tested environment).
 * **Python 3.x** (3.9.13 or higher).
-* **Matplotlib** (Needed for final visualization, install using pip install matplotlib)
+* **Matplotlib** (Needed for final visualization, install using `pip install matplotlib`)
 * **Visual Studio** (if you wish to modify and rebuild the C++ source).
 
 ### Running the Program
