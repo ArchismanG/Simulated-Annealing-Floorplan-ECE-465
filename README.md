@@ -15,15 +15,15 @@ This will start the floorplanning algorithm. Before the algorithm begins, it wil
 
 Enter Dataset Choice (1-11): Enter just a number between 1 to 11 based on the dataset you want to evaluate.
 
-1: ami33    Contains 33 modules for floorplanning
-2: ami49    Contains 49 modules for floorplanning
-3: apte     Contains 9 modules for floorplanning
-4: hp       Contains 11 modules for floorplanning
-5: xerox    Contains 10 modules for floorplanning
-6: n10      Contains 10 modules for floorplanning
-7: n30      Contains 30 modules for floorplanning
-8: n50      Contains 50 modules for floorplanning
-9: n100     Contains 100 modules for floorplanning
+* 1: ami33    Contains 33 modules for floorplanning
+* 2: ami49    Contains 49 modules for floorplanning
+* 3: apte     Contains 9 modules for floorplanning
+* 4: hp       Contains 11 modules for floorplanning
+* 5: xerox    Contains 10 modules for floorplanning
+* 6: n10      Contains 10 modules for floorplanning
+* 7: n30      Contains 30 modules for floorplanning
+* 8: n50      Contains 50 modules for floorplanning
+* 9: n100     Contains 100 modules for floorplanning
 10: n200    Contains 200 modules for floorplanning
 11: n300    Contains 300 modules for floorplanning
 
