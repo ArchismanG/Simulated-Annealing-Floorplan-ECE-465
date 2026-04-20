@@ -27,7 +27,7 @@ This project performs 2D floorplanning by randomly exploring the solution space 
 
 ### Running the Program
 
-1. Download or clone the repository.
+1. Download or clone the repository (clone using Visual Studio).
 2. Open **PowerShell** or **VSCode Terminal**.
 3. Navigate to the directory:
    ```powershell
