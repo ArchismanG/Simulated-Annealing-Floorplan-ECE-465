@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 def main():
-    print("=== PyCharm Controller: Floorplanner ===")
+    print("=== Python Script Controller: Floorplanner ===")
 
     # --- RIGID DIRECTORIES ---
     # Update these if your actual path is slightly different from the screenshot!
